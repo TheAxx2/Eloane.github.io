@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coucou Eloane</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #fce4ec;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      text-align: center;
+      opacity: 1;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #ad1457;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: white;
+      background-color: #e91e63;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    button:hover {
+      background-color: #d81b60;
+      transform: scale(1.05);
+    }
+
+    .page {
+      display: none;
+      text-align: center;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .quote, .story, .love-text {
+      font-size: 1.5rem;
+      color: #ad1457;
+      margin: 20px;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      width: 150px;
+      height: 200px;
+      background-color: #f8bbd0;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ad1457;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "?";
+      font-size: 3rem;
+      color: rgba(173, 20, 87, 0.7);
+      position: absolute;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .card:hover::before {
+      transform: scale(5);
+      opacity: 0;
+    }
+
+    .card:hover {
+      background-color: #f48fb1;
+    }
+
+    .hidden-content {
+      display: none;
+      font-size: 1rem;
+      color: #ad1457;
+      margin-top: 10px;
+      animation: motionBlur 0.3s ease-out forwards;
+    }
+
+    .card .visible {
+      display: block;
+    }
+
+    .card.clicked::before {
+      opacity: 0;
+    }
+
+    .card.clicked .hidden-content {
+      display: block;
+    }
+
+    @keyframes motionBlur {
+      0% {
+        filter: blur(10px);
+        opacity: 0;
+      }
+      100% {
+        filter: blur(0);
+        opacity: 1;
+      }
+    }
+
+    audio {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <audio controls autoplay loop>
+    <source src="./musique.mp4" type="audio/mp4">
+    Votre navigateur ne supporte pas la lecture audio.
+  </audio>
+
+  <div class="container" id="page1" class="page active">
+    <h1>...</h1>
+    <button onclick="nextPage(2)">...</button>
+  </div>
+
+  <div id="page2" class="page">
+    <h1>La première fois..</h1>
+    <p class="story">Cela fait exactement 101 jours que je t'ai vu rentré dans la classe, pour la première fois...</p>
+    <button onclick="previousPage(1)">Retour</button>
+    <button onclick="nextPage(3)">Suivant</button>
+  </div>
+
+  <div id="page3" class="page">
+    <h1>...</h1>
+    <p class="quote">“L'amour est comme le vent, on ne peut pas le voir mais on peut le sentir.” — Nicholas Sparks</p>
+    <button onclick="previousPage(2)">Retour</button>
+    <button onclick="nextPage(4)">Suivant</button>
+  </div>
+
+  <div id="page4" class="page">
+    <h1>La première fois..</h1>
+    <p class="story">Cela fait exactement 101 jours que je t'ai vu rentré dans la classe, pour la première fois...</p>
+    <button onclick="previousPage(3)">Retour</button>
+    <button onclick="nextPage(5)">Suivant</button>
+  </div>
+
+  <div id="page5" class="page">
+    <h1>Pour toi!</h1>
+    <p class="love-text">Eloane... Même si je suis pas très fort en texte comme tu peux le savoir en Français, je vais faire de mon mieux 😅
+    Depuis le jour où je t'ai vu rentré dans cette salle, tu es la seule fille que j'ai remarqué. J'ai appris à te connaitre, donc oui je peux le dire, tu es PARFAITE. Je pourrai regarder chaque centimètre de ton corps pendant des heures pour te dire... Tu es vraiment magnifique, "quand je regarde tes yeux, j’y vois le reflet de mes rêves, Ta beauté me rappelle pourquoi la vie est si brève, Car chaque moment avec toi, je veux qu’il se prolonge sans trêve", cette phrase te correspond parfaitement, Eloane. Même ta personnalité, elle est parfaite. C'est pas censé être ici mais faut que je te le dise un jour t'embrasse vraiment trop bien 😂. J'aimerai vraiment t'embrasser pour toujours...</p>
+    <button onclick="previousPage(4)">Retour</button>
+    <button onclick="nextPage(6)">Suivant</button>
+  </div>
+
+  <div id="page6" class="page">
+    <h1>Bref, je t'aime plus que tout au monde, Eloane ❤️</h1>
+    <p class="love-text" style="font-size: 2rem;">(Clique sur suivant)</p>
+    <button onclick="previousPage(5)">Retour</button>
+    <button onclick="nextPage(7)">Suivant</button>
+  </div>
+
+  <div id="page7" class="page">
+    <h1>Choisis une carte</h1>
+    <div class="cards">
+      <div class="card" onclick="revealCard(this)">
+        <div class="hidden-content">Des bisous n'importe où et n'importe quand... ❤️</div>
+      </div>
+      <div class="card" onclick="revealCard(this)">
+        <div class="hidden-content">Je suis à ton service pour tout, princesse ! (quand je dis tout c'est tout hehe)</div>
+      </div>
+    </div>
+    <button onclick="previousPage(6)">Retour</button>
+    <button onclick="nextPage(8)">Suivant</button>
+  </div>
+
+  <div id="page8" class="page">
+    <h1>Bisouss ❤️</h1>
+    <p class="love-text" style="font-size: 2rem;">Voilà</p>
+    <button onclick="previousPage(7)">Retour</button>
+  </div>
+
+  <script>
+    let currentPage = 1;
+
+    function nextPage(pageNumber) {
+      document.getElementById(`page${currentPage}`).classList.remove('active');
+      currentPage = pageNumber;
+      document.getElementById(`page${currentPage}`).classList.add('active');
+    }
+
+    function previousPage(pageNumber) {
+      document.getElementById(`page${currentPage}`).classList.remove('active');
+      currentPage = pageNumber;
+      document.getElementById(`page${currentPage}`).classList.add('active');
+    }
+
+    function revealCard(card) {
+      card.classList.toggle('clicked');
+    }
+  </script>
+</body>
+</html>
